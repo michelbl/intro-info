@@ -1,4 +1,6 @@
 
+## Listes
+
 mois_de_l_annee = [
     "janvier",
     "février",
@@ -51,3 +53,86 @@ print('Tranche de liste entre 2 et 4 :', mois_de_l_annee[2:4])
 print("Tranche de liste après l'index 2 :", mois_de_l_annee[2:])
 print("Tranche de liste contenant les 3 derniers éléments :", mois_de_l_annee[-3:])
 print('Tranche de liste contenant les 3 permiers éléments :', mois_de_l_annee[:3])
+
+jours_inversés = list(reversed(jours_de_la_semaine))
+print("Jours de la semaine inversés :", jours_inversés)
+
+"""
+# Autres méthodes :
+
+jours_de_la_semaine.reverse()
+print("Les jours inversés sont :", jours_de_la_semaine)
+"""
+
+"""
+jours_inversés_2e_methode = jours_de_la_semaine[::-1]
+print("Les jours inversés sont :", jours_inversés_2e_methode)
+
+jours_de_la_semaine_impairs = jours_de_la_semaine[::2]
+print("Les jours impais sont :", jours_de_la_semaine_impairs)
+"""
+
+print("Caractère d'index 5 :", "Bonjour !"[5])
+print("Fin de chaîne de caractères :", "Bonjour !"[3:])
+print("Chaînede caractère inversée :", "Bonjour !"[::-1])
+
+print("Nombre de mois dans l'année :", len(mois_de_l_annee))
+
+## Dictionnaires
+
+nb_jours = {
+    "janvier": 31,
+    "février": 28,
+    "mars": 31,
+    "avril": 30,
+    "mai": 31,
+    "juin": 30,
+    "juillet": 31,
+    "août": 31,
+    "septembre": 30,
+    "otobre": 31,
+    "novembre": 30,
+    "décembre": 31,
+}
+
+print(nb_jours)
+
+jours_travaillés = {
+    'lundi': True,
+    'mardi': True,
+    'mercredi': True,
+    'jeudi': True,
+    'vendredi': True,
+    'samedi': False,
+    'dimanche': False,
+}
+
+print(jours_travaillés)
+
+doubles = {
+    0: 0,
+    1: 2,
+    2: 4,
+    3: 6,
+    4: 8,
+    5: 10,
+    6: 12,
+    7: 14,
+    8: 16,
+    9: 18,
+}
+
+print(doubles)
+
+print("Mars compte", nb_jours["mars"], "jours.")
+
+print("Jeudi est-il travaillé ? :", jours_travaillés["jeudi"])
+
+if jours_travaillés["jeudi"]:
+    print("Jeudi est travaillé")
+else:
+    print("Jeudi n'est pas travaillé")
+
+print("Le double de 6 est ", doubles[6])
+
+print("Nombre d'éléments dans le dictionnaire nb_jours :", len(nb_jours))
