@@ -2,7 +2,7 @@ import requests
 import json
 
 
-response = requests.get("https://api.openweathermap.org/data/2.5/weather?q=Paris,fr&appid=281f2f47a07f35357ba3cefcc47c7f52&units=metric&mode=json")
+response = requests.get("https://api.openweathermap.org/data/2.5/weather?q=Paris,fr&appid=281f2f47a07f35357ba3cefcc47c7f52&units=metric&mode=json&lang=fr")
 
 print(response)
 print(type(response))
@@ -29,8 +29,22 @@ print(ma_liste[2])
 print(json_décodé[1]['bar'][2])
 """
 
+
 json_décodé = json.loads(response.text)
 print(json_décodé)
+print('Le type du json décodé est : ' + str(type(json_décodé)))
 print(json_décodé['main']['temp'])
-print(json_décodé['weather'][0]['description'])
 
+# Ce code :
+temperature = json_décodé['main']['temp']
+# est équivalent à :
+data_main = json_décodé['main']
+temperature = data_main['temp']
+
+
+print('Le type du sous-objet "weather" est : ' + str(type(json_décodé['weather'])))
+
+breve_description = json_décodé['weather'][0]['description']
+
+print("Il fait " + str(temperature) + "°C à Paris en ce moment.")
+print("La météo est : " + breve_description)
