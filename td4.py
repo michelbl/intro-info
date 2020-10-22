@@ -116,8 +116,68 @@ for compteur in range(6):
 """
 ## Pour chaque nombre entre 1 et 30, afficher si le nombre est pair ou impair.
 
-for compteur in range(1, 31):
+"""for compteur in range(1, 31):
     if compteur % 2 == 0:
         print('Le nombre', compteur, "est pair.")
     else:
         print('Le nombre', compteur, "est impair.")
+"""
+
+## Comment faire une boucle infinie ?
+"""
+x = 1
+while True:
+    x += 1
+    print(x)
+"""
+
+##
+
+formules = ["Bonjour", "Comment vas-tu", "Au revoir"]
+
+prenoms = ["Paul", "Rose", "Etienne"]
+"""
+for formule in formules:
+    for prenom in prenoms:
+        print(formule, prenom)
+
+    print()
+"""
+
+"""for prenom in prenoms:
+    for formule in formules:
+        print(formule, prenom)
+
+    print()
+"""
+
+## Années bisextiles
+
+année = int(input("Choisissez une année :"))
+
+# Solution compliquée, avec des if imbriqués
+if année % 4 == 0:
+    if année % 100 == 0:
+        if année % 400 == 0:
+            print("Exception à l'exception à la règle !")   
+            print(année, "est une année bisextile")
+        else:
+            print('Exception à la règle !')
+            print(année, "n'est pas une année bisextile")
+    else:
+        print(année, "est une année bisextile")
+else:
+    print(année, "n'est pas une année bisextile")
+
+print()
+
+# Solution plus simple
+
+if année % 400 == 0:
+    print("Cette année est bisextile")
+elif année % 100 == 0:
+    print("Cette année n'est pas bisetile")
+elif année % 4 == 0:
+    print("Cette année est bisextile")
+else:
+    print("Cette année n'est pas bisetile")
