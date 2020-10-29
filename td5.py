@@ -111,19 +111,21 @@ if imc > 25:
 import random
 
 nombre_aleatoire = random.randint(0, 100)
+nombre_a_été_trouvé = False
 
 for i in range(6):
     essai_str = input("Devinez le nombre : ")
     essai_int = int(essai_str)
 
     if essai_int == nombre_aleatoire:
-        print("Vous avez trouvé !")
+        nombre_a_été_trouvé = True
         break
-
-    if essai_int < nombre_aleatoire:
+    elif essai_int < nombre_aleatoire:
         print("Le nombre à deviner est plus grand que", essai_int)
-    if essai_int > nombre_aleatoire:
+    elif essai_int > nombre_aleatoire:
         print("Le nombre à deviner est plus petit que", essai_int)
 
-if not nombre_a_été_trouvé:
+if nombre_a_été_trouvé:
+    print("Vous avez trouvé !")
+else:
     print("Vous avez perdu ! Le nombre à trouver était", nombre_aleatoire)
