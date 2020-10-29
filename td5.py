@@ -65,3 +65,21 @@ for i in range(10):
     liste_de_liste_2.append([1, 2 ,3, 4])
 
 print(liste_de_liste_2)
+
+
+# Table de multiplication
+
+table_multiplication = []
+for i in range(10):
+    #table_de_i = [0*i, 1*i, 2*i, 3*i, 4*i, 5*i, 6*i, 7*i, 8*i, 9*i]
+
+    table_de_i = []
+    for j in range(10):
+        table_de_i.append(j * i)
+
+    table_multiplication.append(table_de_i)
+
+print("Tables de multiplication :")
+print(table_multiplication)
+
+print("Le produit de 3 par 7 vaut :", table_multiplication[3][7])
