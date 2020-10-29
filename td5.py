@@ -112,13 +112,18 @@ import random
 
 nombre_aleatoire = random.randint(0, 100)
 
-essai_str = input("Devinez le nombre : ")
-essai_int = int(essai_str)
+for i in range(6):
+    essai_str = input("Devinez le nombre : ")
+    essai_int = int(essai_str)
 
-if essai_int == nombre_aleatoire:
-    print("Vous avez trouvé !")
-if essai_int < nombre_aleatoire:
-    print("Le nombre à deviner est plus grand que", essai_int)
-if essai_int > nombre_aleatoire:
-    print("Le nombre à deviner est plus petit que", essai_int)
+    if essai_int == nombre_aleatoire:
+        print("Vous avez trouvé !")
+        break
 
+    if essai_int < nombre_aleatoire:
+        print("Le nombre à deviner est plus grand que", essai_int)
+    if essai_int > nombre_aleatoire:
+        print("Le nombre à deviner est plus petit que", essai_int)
+
+if not nombre_a_été_trouvé:
+    print("Vous avez perdu ! Le nombre à trouver était", nombre_aleatoire)
