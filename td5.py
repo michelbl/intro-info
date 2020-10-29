@@ -83,3 +83,23 @@ print("Tables de multiplication :")
 print(table_multiplication)
 
 print("Le produit de 3 par 7 vaut :", table_multiplication[3][7])
+
+
+# Calcul de l'IMC 
+
+#taille_en_cm = int(input("Quel est votre taille en cm ? "))
+taille_en_m = float(input("Quel est votre taille en cm ? "))
+poids_en_kg = int(input("Quel est votre poids en kg ? "))
+#taille_en_m = taille_en_cm / 100
+
+print("Vérifions que la taille est bien dans un type numérique :", type(taille_en_m))
+print("Vérifions que le poids est bien dans un type numérique :", type(poids_en_kg))
+
+imc = poids_en_kg/taille_en_m**2
+print("L'IMC vaut :", imc)
+
+if imc < 18.5:
+    print("Attention, votre IMC est bas :", imc, "!")
+
+if imc > 25:
+    print("Attention, votre IMC est élevé :", imc, "!")
