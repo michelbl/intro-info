@@ -1,3 +1,4 @@
+"""
 # Pour une liste de nombres, comment calculer la somme des nombres ?
 
 liste_des_nombres_a_additionner = [5, 2, 7, 2, 5, 6]
@@ -103,3 +104,21 @@ if imc < 18.5:
 
 if imc > 25:
     print("Attention, votre IMC est élevé :", imc, "!")
+"""
+
+# Deviner un nombre
+
+import random
+
+nombre_aleatoire = random.randint(0, 100)
+
+essai_str = input("Devinez le nombre : ")
+essai_int = int(essai_str)
+
+if essai_int == nombre_aleatoire:
+    print("Vous avez trouvé !")
+if essai_int < nombre_aleatoire:
+    print("Le nombre à deviner est plus grand que", essai_int)
+if essai_int > nombre_aleatoire:
+    print("Le nombre à deviner est plus petit que", essai_int)
+
