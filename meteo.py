@@ -5,6 +5,7 @@ import json
 response = requests.get("https://api.openweathermap.org/data/2.5/weather?q=Paris,fr&appid=281f2f47a07f35357ba3cefcc47c7f52&units=metric&mode=json&lang=fr")
 
 print(response)
+print(response.status_code)
 print(type(response))
 
 print(response.text)
