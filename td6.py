@@ -1,13 +1,15 @@
+import random
+
 
 print("Choisissez un nombre entre 0 et 100 s'il-vous-plaît.")
 
 # bloque l'execution tant que l'utilisateur n'appuie pas sur la touche Entrée
 input()
 
-essai_ordinateur = 42
 nombre_a_été_trouvé = False
 
 for i in range(3):
+    essai_ordinateur = random.randint(0, 100)
     print("Est-ce que le nombre à deviner est", essai_ordinateur, '? ')
     reponse = input("(oui/non)")
 
@@ -22,9 +24,7 @@ for i in range(3):
     elif reponse == 'non':
         print("")
 
-
 if nombre_a_été_trouvé:
     print("Super ! J'ai gagné.")
 else:
     print("J'ai perdu !")
-
