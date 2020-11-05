@@ -7,21 +7,28 @@ print("Choisissez un nombre entre 0 et 100 s'il-vous-plaît.")
 input()
 
 nombre_a_été_trouvé = False
+nombre_posible_min = 0
+nombre_possible_max = 100
 
-for i in range(3):
-    essai_ordinateur = random.randint(0, 100)
+for i in range(10):
+    essai_ordinateur = (nombre_posible_min + nombre_possible_max) // 2
+
     print("Est-ce que le nombre à deviner est", essai_ordinateur, '? ')
-    reponse = input("(oui/non)")
+    reponse = input("inférieur ('<'), égal ('=') ou supérieur ('>') ? ")
 
-    while reponse != 'oui' and reponse != 'non':
+    while reponse != '<' and reponse != '=' and reponse != '>':
         print("Je n'ai pas compris. Merci de répondre par oui ou par non.")
-        reponse = input("(oui/non)")
+        reponse = input("inférieur ('<'), égal ('=') ou supérieur ('>') ? ")
 
-    if reponse == 'oui':
+    if reponse == '=':
         nombre_a_été_trouvé = True
         print("")
         break
-    elif reponse == 'non':
+    elif reponse == '<':
+        nombre_possible_max = essai_ordinateur - 1
+        print("")
+    elif reponse == '>':
+        nombre_posible_min = essai_ordinateur + 1
         print("")
 
 if nombre_a_été_trouvé:
