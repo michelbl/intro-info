@@ -1,7 +1,7 @@
 
 
-mot = [
-    "Bibliothèque François-Mitterrand"
+liste_des_stations = [
+    "Bibliothèque François-Mitterrand",
     "Campo-Formio",
     "Chevaleret",
     "Corvisart",
@@ -52,24 +52,20 @@ dict_lettre = {
     'Z': 26,
 }
 
-# liste des lettres de A à Z
-# entiers de 1 à 26
-# assembler ces 2 listes pour faire un dictionnaire
+for station in liste_des_stations:
+    print(station)
 
-# Provoque nue exception KeyError
-#dict_lettre[mot]
+    somme = 0
 
-dict_lettre['A']  # donne 1
+    for lettre in station:
+        lettre_majuscule = lettre.upper()
 
-somme = 0
+        if lettre_majuscule in dict_lettre:
+            somme = somme + dict_lettre[lettre_majuscule]
+        else:
+            print("Le caractère", lettre_majuscule, "n'est pas reconnu.")
 
-for lettre in mot:
-    print(lettre)
-    print(dict_lettre[lettre])
-    somme = somme + dict_lettre[lettre]
-    print()
-
-print(somme)
+    print(somme)
 
 """
 
