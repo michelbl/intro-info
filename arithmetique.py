@@ -1,5 +1,4 @@
 
-
 liste_des_stations = [
     "Bibliothèque François-Mitterrand",
     "Campo-Formio",
@@ -20,54 +19,17 @@ liste_des_stations = [
     "Tolbiac",
 ]
 
-
-# 2 + 3 + 3 + 1 + 2 = 11
-
-dict_lettre = {
-    'A': 1,
-    'B': 2,
-    'C': 3,
-    'D': 4,
-    'E': 5,
-    'F': 6,
-    'G': 7,
-    'H': 8,
-    'I': 9,
-    'J': 10,
-    'K': 11,
-    'L': 12,
-    'M': 13,
-    'N': 14,
-    'O': 15,
-    'P': 16,
-    'Q': 17,
-    'R': 18,
-    'S': 19,
-    'T': 20,
-    'U': 21,
-    'V': 22,
-    'W': 23,
-    'X': 24,
-    'Y': 25,
-    'Z': 26,
-}
-
 for station in liste_des_stations:
     print(station)
 
     somme = 0
 
-    for lettre in station:
-        lettre_majuscule = lettre.upper()
+    for caractere in station:
+        caractere_majuscule = caractere.upper()
 
-        if lettre_majuscule in dict_lettre:
-            somme = somme + dict_lettre[lettre_majuscule]
+        if ord(caractere_majuscule) in range(65,91): # Tests si caractere_majuscule est bien une lettre
+            somme = somme + ord(caractere_majuscule)-64
         else:
-            print("Le caractère", lettre_majuscule, "n'est pas reconnu.")
+            print("Le caractère", caractere_majuscule, "n'est pas reconnu.")
 
     print(somme)
-
-"""
-
-print(dict_lettre['B'])
-"""
