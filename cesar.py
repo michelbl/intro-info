@@ -68,11 +68,22 @@ DWWDTXHUDOHVLDPDLQWHQDQW
 ATTAQUERALESIAMAINTENANT
 """
 
-message_a_chiffre = 'BONJOUR MONDE'
+message_à_chiffrer = 'BONJOUR MONDE'
 
 message_chiffré = ''
-for lettre_du_message in message_a_chiffre:
+for lettre_du_message in message_à_chiffrer:
     lettre_chiffrée = chiffre_une_lettre(caractère=lettre_du_message)
     message_chiffré = message_chiffré + lettre_chiffrée
 
 print('Le message chiffré est', ''.join(message_chiffré))
+
+
+message_à_déchiffrer = 'DWWDTXHUDOHVLDPDLQWHQDQW'
+
+message_déchiffré = ''
+for lettre_du_message in message_à_déchiffrer:
+    lettre_déchiffrée = dechiffre_une_lettre(caractère=lettre_du_message)
+    message_déchiffré = message_déchiffré + lettre_déchiffrée
+
+print('Le message déchiffré est', ''.join(message_déchiffré))
+
