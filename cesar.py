@@ -1,13 +1,12 @@
 
-"""BONJOUR MONDE
-ERQMRXU PRQGH
-
-DWWDTXHUDOHVLDPDLQWHQDQW
-ATTAQUERALESIAMAINTENANT
-"""
-
-def chiffre_une_lettre(lettre):
+def chiffre_une_lettre(caractère):
     #print("Lettre :", lettre)
+
+    if (caractère < 'A') or (caractère > 'Z'):
+        print('Le caractère', caractère, "n'est pas une lettre majuscule! Pas de décalage.")
+        return caractère
+
+    lettre = caractère
 
     codage_numerique = ord(lettre)-64
 
@@ -26,8 +25,14 @@ def chiffre_une_lettre(lettre):
     return lettre_apres_decalage
 
 
-def dechiffre_une_lettre(lettre):
+def dechiffre_une_lettre(caractère):
     #print("Lettre :", lettre)
+
+    if (caractère < 'A') or (caractère > 'Z'):
+        print('Le caractère', caractère, "n'est pas une lettre majuscule! Pas de décalage.")
+        return caractère
+
+    lettre = caractère
 
     codage_numerique = ord(lettre)-64
 
@@ -47,10 +52,27 @@ def dechiffre_une_lettre(lettre):
 
 
 
-lettre_encodee = chiffre_une_lettre(lettre="A")
+lettre_encodee = chiffre_une_lettre(caractère="A")
 print("Resultat du codage de la lettre A :", lettre_encodee)
 
 print()
 
-lettre_decodee = dechiffre_une_lettre(lettre="A")
+lettre_decodee = dechiffre_une_lettre(caractère="A")
 print("Resultat du decodage de la lettre A :", lettre_decodee)
+
+
+"""BONJOUR MONDE
+ERQMRXU PRQGH
+
+DWWDTXHUDOHVLDPDLQWHQDQW
+ATTAQUERALESIAMAINTENANT
+"""
+
+message_a_chiffre = 'BONJOUR MONDE'
+
+message_chiffré = ''
+for lettre_du_message in message_a_chiffre:
+    lettre_chiffrée = chiffre_une_lettre(caractère=lettre_du_message)
+    message_chiffré = message_chiffré + lettre_chiffrée
+
+print('Le message chiffré est', ''.join(message_chiffré))
