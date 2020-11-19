@@ -1,43 +1,21 @@
 import time
 import os
 
+position = 3
+
 os.system('clear')
 
-print('--1-------')
+plateau_de_jeu = ('.' * (position-1)) + 'X' + ('.' * (10-position))
+print(plateau_de_jeu)
 
-time.sleep(0.5)
-os.system('clear')
+for i in range(7):
+    time.sleep(0.5)
+    os.system('clear')
 
-print('---1------')
+    # déplace le joueur vers la droite
+    position = position + 1
 
-time.sleep(0.5)
-os.system('clear')
-
-print('----1-----')
-
-time.sleep(0.5)
-os.system('clear')
-
-print('-----1----')
-
-time.sleep(0.5)
-os.system('clear')
-
-print('------1---')
-
-time.sleep(0.5)
-os.system('clear')
-
-print('-------1--')
-
-time.sleep(0.5)
-os.system('clear')
-
-print('--------1-')
-
-time.sleep(0.5)
-os.system('clear')
-
-print('---------1')
+    plateau_de_jeu = ('.' * (position-1)) + 'X' + ('.' * (10-position))
+    print(plateau_de_jeu)
 
 print('Le jeu est fini')
