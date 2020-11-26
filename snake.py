@@ -6,11 +6,12 @@ import kbhit
 
 kb = kbhit.KBHit()
 
-position = 3
+position_x = 3  # le personnage est sur la 3e colonne
+position_y = 2  # le personnage est sur la 2e ligne
 
 os.system('clear')  # Sur Windows : os.system('cls')
 
-plateau_de_jeu = ('.' * (position-1)) + 'X' + ('.' * (10-position))
+plateau_de_jeu = ('.' * (position_x-1)) + 'X' + ('.' * (10-position_x))
 print(plateau_de_jeu)
 
 while True:
@@ -23,15 +24,19 @@ while True:
         caractère_frappé = kb.getch()
         code_du_caractère = ord(caractère_frappé)
         if caractère_frappé == 'd':
-            position = position + 1
-        elif caractère_frappé == 'g':
-            position = position - 1
+            position_x = position_x + 1
+        elif caractère_frappé == 'q':
+            position_x = position_x - 1
 
-    if (position < 1) or (position > 10):
-        print("Le joueur a pris un mur !")
+    if (position_x < 1) or (position_x > 10):
+        print("Le joueur a pris un mur à gauche ou à droite !")
         break
 
-    plateau_de_jeu = ('.' * (position-1)) + 'X' + ('.' * (10-position))
+    if (position_y < 1) or (position_y > 8):
+        print("Le joueur a pris un mur en haut ou en bas !")
+        break
+
+    plateau_de_jeu = ('.' * (position_x-1)) + 'X' + ('.' * (10-position_x))
     print(plateau_de_jeu)
 
 print('Le jeu est fini')
