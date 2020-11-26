@@ -119,7 +119,6 @@ if __name__ == "__main__":
     print('Hit any key, or ESC to exit')
 
     while True:
-
         if kb.kbhit():
             c = kb.getch()
             c_ord = ord(c)

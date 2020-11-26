@@ -1,19 +1,35 @@
 import time
 import os
 
+import kbhit
+
+
+kb = kbhit.KBHit()
+
 position = 3
 
-os.system('clear')
+os.system('clear')  # Sur Windows : os.system('cls')
 
 plateau_de_jeu = ('.' * (position-1)) + 'X' + ('.' * (10-position))
 print(plateau_de_jeu)
 
-for i in range(7):
-    time.sleep(0.5)
+while True:
+    time.sleep(0.01)
     os.system('clear')
 
-    # déplace le joueur vers la droite
-    position = position + 1
+    # on souhaite savoir si le joueur a appuyé sur une touche
+    if kb.kbhit():
+
+        caractère_frappé = kb.getch()
+        code_du_caractère = ord(caractère_frappé)
+        if caractère_frappé == 'd':
+            position = position + 1
+        elif caractère_frappé == 'g':
+            position = position - 1
+
+    if (position < 1) or (position > 10):
+        print("Le joueur a pris un mur !")
+        break
 
     plateau_de_jeu = ('.' * (position-1)) + 'X' + ('.' * (10-position))
     print(plateau_de_jeu)
