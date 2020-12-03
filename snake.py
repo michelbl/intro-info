@@ -9,6 +9,7 @@ kb = kbhit.KBHit()
 
 historique_positions_x = [3]
 historique_positions_y = [2]
+
 taille_du_serpent = 1
 
 position_pomme_x = 5
@@ -49,6 +50,7 @@ visualiser_plateau(
 while True:
     time.sleep(0.2)
 
+    ### Ici, on prend en compte les interaction avec l'utilisateur
     # on souhaite savoir si le joueur a appuyé sur une touche
     if kb.kbhit():
 
@@ -70,14 +72,15 @@ while True:
         elif caractère_frappé == 's':
             direction_x = 0
             direction_y = 1
+    
+
+    ### Ici, on met à jour l'état du jeu en tenant compte des règles logiques du jeu
 
     ancienne_position_x = historique_positions_x[-1]
     nouvelle_position_x = ancienne_position_x + direction_x
-    historique_positions_x.append(nouvelle_position_x)
 
     ancienne_position_y = historique_positions_y[-1]
     nouvelle_position_y = ancienne_position_y + direction_y
-    historique_positions_y.append(nouvelle_position_y)
 
     if (nouvelle_position_x < 1) or (nouvelle_position_x > 10):
         print("Le joueur a pris un mur à gauche ou à droite !")
@@ -85,6 +88,14 @@ while True:
 
     if (nouvelle_position_y < 1) or (nouvelle_position_y > 8):
         print("Le joueur a pris un mur en haut ou en bas !")
+        break
+
+    positions_x_serpent = historique_positions_x[-taille_du_serpent:]
+    positions_y_serpent = historique_positions_y[-taille_du_serpent:]
+    liste_positions_serpent = zip(positions_x_serpent, positions_y_serpent)
+    
+    if (nouvelle_position_x, nouvelle_position_y) not in liste_positions_serpent:
+        print("Le serpent s'est percuté !")
         break
 
     if ((nouvelle_position_x == position_pomme_x) and (nouvelle_position_y == position_pomme_y)):
@@ -97,6 +108,12 @@ while True:
         score = score + 1
 
         taille_du_serpent = taille_du_serpent + 1
+
+    historique_positions_x.append(nouvelle_position_x)
+    historique_positions_y.append(nouvelle_position_y)
+
+
+    ### Ici, on affiche le jeu
 
     visualiser_plateau(
         historique_positions_x=historique_positions_x,
