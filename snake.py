@@ -94,7 +94,7 @@ while True:
     positions_y_serpent = historique_positions_y[-taille_du_serpent:]
     liste_positions_serpent = zip(positions_x_serpent, positions_y_serpent)
     
-    if (nouvelle_position_x, nouvelle_position_y) not in liste_positions_serpent:
+    if (nouvelle_position_x, nouvelle_position_y) in liste_positions_serpent:
         print("Le serpent s'est percuté !")
         break
 
