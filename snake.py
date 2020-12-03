@@ -9,14 +9,27 @@ kb = kbhit.KBHit()
 position_x = 3  # le personnage est sur la 3e colonne
 position_y = 2  # le personnage est sur la 2e ligne
 
-os.system('clear')  # Sur Windows : os.system('cls')
 
-plateau_de_jeu = ('.' * (position_x-1)) + 'X' + ('.' * (10-position_x))
-print(plateau_de_jeu)
+def visualiser_plateau(position_x, position_y):
+    os.system('clear')  # Sur Windows : os.system('cls')
+
+    plateau_de_jeu = ''
+
+    for i in range(position_y-1):
+        plateau_de_jeu = plateau_de_jeu + '..........\n'
+
+    plateau_de_jeu = plateau_de_jeu + ('.' * (position_x-1)) + 'X' + ('.' * (10-position_x)) + '\n'
+
+    for i in range(8-position_y):
+        plateau_de_jeu = plateau_de_jeu + '..........\n'
+    
+    print(plateau_de_jeu)
+
+
+visualiser_plateau(position_x=position_x, position_y=position_y)
 
 while True:
-    time.sleep(0.01)
-    os.system('clear')
+    time.sleep(0.1)
 
     # on souhaite savoir si le joueur a appuyé sur une touche
     if kb.kbhit():
@@ -36,7 +49,6 @@ while True:
         print("Le joueur a pris un mur en haut ou en bas !")
         break
 
-    plateau_de_jeu = ('.' * (position_x-1)) + 'X' + ('.' * (10-position_x))
-    print(plateau_de_jeu)
+    visualiser_plateau(position_x=position_x, position_y=position_y)
 
 print('Le jeu est fini')
