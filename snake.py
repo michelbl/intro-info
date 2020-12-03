@@ -15,6 +15,11 @@ position_pomme_y = 7
 
 score = 0
 
+# valeurs possibles : -1 (reculer sur l'axe), 0 (ne pas bouger), 1 (avancer sur l'axe)
+direction_x = 1
+direction_y = 0
+
+
 def visualiser_plateau(position_x, position_y, score):
     os.system('clear')  # Sur Windows : os.system('cls')
 
@@ -39,14 +44,25 @@ while True:
 
         caractère_frappé = kb.getch()
         code_du_caractère = ord(caractère_frappé)
+
         if caractère_frappé == 'd':
-            position_x = position_x + 1
+            direction_x = 1
+            direction_y = 0
+
         elif caractère_frappé == 'q':
-            position_x = position_x - 1
+            direction_x = -1
+            direction_y = 0
+
         elif caractère_frappé == 'z':
-            position_y = position_y - 1
+            direction_x = 0
+            direction_y = -1
+
         elif caractère_frappé == 's':
-            position_y = position_y + 1
+            direction_x = 0
+            direction_y = 1
+
+    position_x = position_x + direction_x
+    position_y = position_y + direction_y
 
     if (position_x < 1) or (position_x > 10):
         print("Le joueur a pris un mur à gauche ou à droite !")
