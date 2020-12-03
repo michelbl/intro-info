@@ -7,8 +7,9 @@ import kbhit
 
 kb = kbhit.KBHit()
 
-position_x = 3  # le personnage est sur la 3e colonne
-position_y = 2  # le personnage est sur la 2e ligne
+historique_positions_x = [3]
+historique_positions_y = [2]
+taille_du_serpent = 1
 
 position_pomme_x = 5
 position_pomme_y = 7
@@ -20,13 +21,17 @@ direction_x = 1
 direction_y = 0
 
 
-def visualiser_plateau(position_x, position_y, score):
+def visualiser_plateau(historique_positions_x, historique_positions_y, score, taille_du_serpent):
     os.system('clear')  # Sur Windows : os.system('cls')
 
     plateau_de_jeu = '..........\n' * 8 + 'Score : ' + str(score)
 
-    index = ((position_y - 1) * 11) + (position_x - 1)
-    plateau_de_jeu = plateau_de_jeu[:index] + 'X' + plateau_de_jeu[index + 1:]
+    for i in range(taille_du_serpent):
+        position_x = historique_positions_x[-(i+1)]
+        position_y = historique_positions_y[-(i+1)]
+
+        index = ((position_y - 1) * 11) + (position_x - 1)
+        plateau_de_jeu = plateau_de_jeu[:index] + 'X' + plateau_de_jeu[index + 1:]
 
     index_pomme = ((position_pomme_y - 1) * 11) + (position_pomme_x - 1)
     plateau_de_jeu = plateau_de_jeu[:index_pomme] + 'O' + plateau_de_jeu[index_pomme + 1:]
@@ -34,10 +39,15 @@ def visualiser_plateau(position_x, position_y, score):
     print(plateau_de_jeu)
 
 
-visualiser_plateau(position_x=position_x, position_y=position_y, score=score)
+visualiser_plateau(
+    historique_positions_x=historique_positions_x,
+    historique_positions_y=historique_positions_y,
+    score=score,
+    taille_du_serpent=taille_du_serpent,
+)
 
 while True:
-    time.sleep(0.1)
+    time.sleep(0.2)
 
     # on souhaite savoir si le joueur a appuyé sur une touche
     if kb.kbhit():
@@ -61,26 +71,38 @@ while True:
             direction_x = 0
             direction_y = 1
 
-    position_x = position_x + direction_x
-    position_y = position_y + direction_y
+    ancienne_position_x = historique_positions_x[-1]
+    nouvelle_position_x = ancienne_position_x + direction_x
+    historique_positions_x.append(nouvelle_position_x)
 
-    if (position_x < 1) or (position_x > 10):
+    ancienne_position_y = historique_positions_y[-1]
+    nouvelle_position_y = ancienne_position_y + direction_y
+    historique_positions_y.append(nouvelle_position_y)
+
+    if (nouvelle_position_x < 1) or (nouvelle_position_x > 10):
         print("Le joueur a pris un mur à gauche ou à droite !")
         break
 
-    if (position_y < 1) or (position_y > 8):
+    if (nouvelle_position_y < 1) or (nouvelle_position_y > 8):
         print("Le joueur a pris un mur en haut ou en bas !")
         break
 
-    if ((position_x == position_pomme_x) and (position_y == position_pomme_y)):
+    if ((nouvelle_position_x == position_pomme_x) and (nouvelle_position_y == position_pomme_y)):
         # changer la position de la pomme
-        while ((position_x == position_pomme_x) and (position_y == position_pomme_y)):
+        while ((nouvelle_position_x == position_pomme_x) and (nouvelle_position_y == position_pomme_y)):
             position_pomme_x = random.randint(1, 10)
             position_pomme_y = random.randint(1, 8)
 
         # rajouter un point au joueur
         score = score + 1
 
-    visualiser_plateau(position_x=position_x, position_y=position_y, score=score)
+        taille_du_serpent = taille_du_serpent + 1
+
+    visualiser_plateau(
+        historique_positions_x=historique_positions_x,
+        historique_positions_y=historique_positions_y,
+        score=score,
+        taille_du_serpent=taille_du_serpent,
+    )
 
 print('Le jeu est fini')
