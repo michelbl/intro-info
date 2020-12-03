@@ -1,5 +1,6 @@
 import time
 import os
+import random
 
 import kbhit
 
@@ -12,10 +13,12 @@ position_y = 2  # le personnage est sur la 2e ligne
 position_pomme_x = 5
 position_pomme_y = 7
 
-def visualiser_plateau(position_x, position_y):
+score = 0
+
+def visualiser_plateau(position_x, position_y, score):
     os.system('clear')  # Sur Windows : os.system('cls')
 
-    plateau_de_jeu = '..........\n' * 8
+    plateau_de_jeu = '..........\n' * 8 + 'Score : ' + str(score)
 
     index = ((position_y - 1) * 11) + (position_x - 1)
     plateau_de_jeu = plateau_de_jeu[:index] + 'X' + plateau_de_jeu[index + 1:]
@@ -26,7 +29,7 @@ def visualiser_plateau(position_x, position_y):
     print(plateau_de_jeu)
 
 
-visualiser_plateau(position_x=position_x, position_y=position_y)
+visualiser_plateau(position_x=position_x, position_y=position_y, score=score)
 
 while True:
     time.sleep(0.1)
@@ -53,6 +56,15 @@ while True:
         print("Le joueur a pris un mur en haut ou en bas !")
         break
 
-    visualiser_plateau(position_x=position_x, position_y=position_y)
+    if ((position_x == position_pomme_x) and (position_y == position_pomme_y)):
+        # changer la position de la pomme
+        while ((position_x == position_pomme_x) and (position_y == position_pomme_y)):
+            position_pomme_x = random.randint(1, 10)
+            position_pomme_y = random.randint(1, 8)
+
+        # rajouter un point au joueur
+        score = score + 1
+
+    visualiser_plateau(position_x=position_x, position_y=position_y, score=score)
 
 print('Le jeu est fini')
